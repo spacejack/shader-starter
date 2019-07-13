@@ -1,0 +1,17 @@
+{
+  "name": "shader-starter",
+  "version": "1.0.0",
+  "description": "Shader Starter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 3000 public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "http-server": "^0.11.1"
+  }
+}
