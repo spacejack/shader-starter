@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server -p 3000 public"
+    "start": "budo -p 3000 --dir public --live=*.{html,css,js,glsl}"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^6.0.1",
-    "http-server": "^0.11.1"
+    "budo": "^11.6.2",
+    "eslint": "^6.0.1"
   }
 }

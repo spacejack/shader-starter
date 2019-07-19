@@ -4,9 +4,15 @@ import * as THREE from './vendor/three.module.js'
 
 /**
  * HTML elements
- * @type {{container: HTMLElement | undefined; info: HTMLElement | undefined}}
+ * @type {{
+ *  readonly container: HTMLElement
+ *  readonly info: HTMLElement
+ * }}
  */
-const dom = {container: undefined, info: undefined}
+const dom = {
+	container: document.querySelector('.container'),
+	info: document.querySelector('.info')
+}
 /** @type {THREE.OrthographicCamera} */
 let camera
 /** @type {*} */
@@ -41,6 +47,7 @@ function initRenderer (vertexShader, fragmentShader) {
 	dom.container.appendChild(renderer.domElement)
 
 	onWindowResize()
+	renderer.render(scene, camera)
 	window.addEventListener('resize', onWindowResize, false)
 }
 
@@ -69,12 +76,6 @@ function decodeResponse (r) {
 
 /** Load the shader sources, then set up the THREE Renderer */
 async function init() {
-	// Collect some needed DOM elements
-	dom.container = document.querySelector('.container')
-	if (dom.container == null) {
-		throw new Error('.container element not found in dom')
-	}
-	dom.info = document.querySelector('.info')
 	// cache buster value
 	const t = Date.now()
 	const [vshader, fshader] = await Promise.all([
